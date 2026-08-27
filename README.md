@@ -8,13 +8,10 @@ Features a refined **Codex Studio Theme**, **Codex v1 Compact Bento Cockpit Layo
 
 ## Features
 
-- **Aesthetic Themes**:
-  - **Codex**: 1:1 sleek studio dark theme with refined typography and contrast.
-  - **Dark Tech**: High-tech cyber dark palette with glowing accents.
-  - **Gradio Base**: Clean native Gradio palette.
-- **UI Bone Architectures**:
-  - **Codex v1 Cockpit**: Compact, ergonomic bento-grid layout grouping Sampling, Resolution, and Seed/Batching into dedicated cockpit cards with docked extension accordions.
-  - **Legacy Fluid Forge**: Traditional sequential stack layout.
+- **Codex Studio Theme**:
+  - Refined 1:1 studio dark theme with clean typography, minimalist borders, and high contrast.
+- **Codex Bento Cockpit Bone**:
+  - Compact, ergonomic 3-card bento-grid grouping Sampling & Guidance, Framing & Resolution, and Seed controls.
 - **Accordion Docking**:
   - Automatically consolidates secondary extension accordions into a clean vertical drawer/dock to eliminate endless vertical scrolling.
 - **Resolution & Aspect Ratio Quick Select**:
@@ -37,23 +34,14 @@ Features a refined **Codex Studio Theme**, **Codex v1 Compact Bento Cockpit Layo
 
 ---
 
-## Settings & Configuration
-
-Under **Settings** -> **Fluid Forge**:
-- **UI Theme**: Choose between `Codex`, `Dark Tech`, or `Gradio Base`.
-- **UI Bone**: Choose between `Codex v1` (Bento cockpit) or `Legacy Fluid Forge`.
-- **Fluid Forge: UI Hide** -> **Hide Seed & Batching Panel**: Toggle off the seed/batch card for an even more compact view.
-
----
-
 ## Structure
 
 ```text
 sd-forge-fluid-ui/
 ├── scripts/
-│   └── fluid_ui.py      # Extension options & Gradio backend hooks
+│   └── fluid_ui.py      # Extension lifecycle script
 ├── javascript/
-│   └── fluid.js         # Frontend controller, layout bone builder & mobile interactions
+│   └── fluid.js         # Frontend controller, bento cockpit builder & mobile interactions
 ├── style.css            # Theme tokens, Bento grid styling, and responsive layout
 └── README.md
 ```

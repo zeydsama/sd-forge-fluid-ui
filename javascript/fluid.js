@@ -6,27 +6,16 @@
 
 (function () {
     
-    // --- 1. THEME CONFIGURATION ---
+    // --- 1. THEME INITIALIZATION (Codex Studio Dark Default) ---
     const initTheme = () => {
-        let theme = 'Codex';
-        if (typeof opts !== 'undefined' && opts.fluid_ui_theme) {
-            theme = opts.fluid_ui_theme;
-        }
-
         const targets = [document.documentElement, document.body];
         const gApp = document.querySelector('gradio-app') || document.querySelector('#gradio-app');
         if (gApp) targets.push(gApp);
 
         targets.forEach(el => {
             if (!el) return;
-            el.classList.remove('fluid-theme-dark-tech', 'fluid-theme-codex', 'fluid-theme-base');
-            if (theme === 'Dark Tech') {
-                el.classList.add('fluid-theme-dark-tech');
-            } else if (theme === 'Gradio Base') {
-                el.classList.add('fluid-theme-base');
-            } else {
-                el.classList.add('fluid-theme-codex');
-            }
+            el.classList.remove('fluid-theme-dark-tech', 'fluid-theme-base');
+            el.classList.add('fluid-theme-codex');
         });
     };
 
@@ -55,25 +44,8 @@
 
     // --- 2. CODEX V1 GENERATION COCKPIT BONE ---
     const initCodexCockpit = () => {
-        const bone = (typeof opts !== 'undefined' && opts.fluid_ui_bone) ? opts.fluid_ui_bone : 'Codex v1';
-        
-        if (bone !== 'Codex v1') {
-            document.body.classList.remove('fluid-bone-codex-v1');
-            document.body.classList.add('fluid-bone-legacy');
-            document.querySelectorAll('.fluid-accordion-dock').forEach(el => el.remove());
-            document.querySelectorAll('.fluid-docked-accordion').forEach(acc => {
-                acc.classList.remove('fluid-docked-accordion');
-                acc.style.display = '';
-            });
-            return;
-        }
-
         document.body.classList.remove('fluid-bone-legacy');
         document.body.classList.add('fluid-bone-codex-v1');
-
-        const hideSeedBatch = (typeof opts !== 'undefined' && (opts.fluid_ui_hide_seed_batch === true || opts.fluid_ui_hide_seed_batch === 'True' || opts.fluid_ui_hide_seed_batch === 'true')) ? true : false;
-        document.body.classList.toggle('fluid-hide-seed-batch', hideSeedBatch);
-        document.documentElement.classList.toggle('fluid-hide-seed-batch', hideSeedBatch);
 
         const tabs = ['txt2img', 'img2img'];
 
@@ -111,8 +83,8 @@
 
             const cardSeedEl = cockpitGrid.querySelector('.card-seed');
             if (cardSeedEl) {
-                cardSeedEl.style.display = hideSeedBatch ? 'none' : '';
-                cockpitGrid.style.gridTemplateColumns = hideSeedBatch ? '1fr 1fr' : '';
+                cardSeedEl.style.display = '';
+                cockpitGrid.style.gridTemplateColumns = '';
             }
 
             const samplingContent = cockpitGrid.querySelector('.card-sampling .fluid-bento-content');
