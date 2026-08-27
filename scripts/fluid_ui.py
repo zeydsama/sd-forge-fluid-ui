@@ -12,9 +12,9 @@ def on_ui_settings():
             "Native Fluid",
             "UI Theme",
             gr.Radio,
-            {"choices": ["Native Fluid", "Pure Gradio"]},
+            {"choices": ["Native Fluid", "Studio Pro Max", "Pure Gradio"]},
             section=section
-        ).info("Select the UI aesthetic theme: Native Fluid (Codex Studio Dark) or Pure Gradio (Default Gradio theme). (Reload UI to apply)")
+        ).info("Select the UI aesthetic theme: Native Fluid (Codex Studio Dark), Studio Pro Max (Deep Slate Obsidian & Electric Indigo), or Pure Gradio (Default Gradio theme). (Reload UI to apply)")
     )
 
 script_callbacks.on_ui_settings(on_ui_settings)

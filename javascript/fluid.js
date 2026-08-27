@@ -6,7 +6,7 @@
 
 (function () {
     
-    // --- 1. THEME INITIALIZATION (Native Fluid vs Pure Gradio) ---
+    // --- 1. THEME INITIALIZATION (Native Fluid vs Studio Pro Max vs Pure Gradio) ---
     const initTheme = () => {
         let theme = 'Native Fluid';
         if (typeof opts !== 'undefined' && opts.fluid_ui_theme) {
@@ -19,9 +19,11 @@
 
         targets.forEach(el => {
             if (!el) return;
-            el.classList.remove('fluid-theme-codex', 'fluid-theme-pure-gradio');
+            el.classList.remove('fluid-theme-codex', 'fluid-theme-pro-max', 'fluid-theme-pure-gradio');
             if (theme === 'Pure Gradio') {
                 el.classList.add('fluid-theme-pure-gradio');
+            } else if (theme === 'Studio Pro Max') {
+                el.classList.add('fluid-theme-pro-max');
             } else {
                 el.classList.add('fluid-theme-codex');
             }
