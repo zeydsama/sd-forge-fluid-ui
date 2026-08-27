@@ -6,7 +6,7 @@
 */
 
 /* ==========================================================================
-   THEME: NATIVE FLUID / CODEX (1:1 Pristine Codex Studio Theme)
+   THEME: NATIVE FLUID / CODEX (1:1 Pristine Codex Studio Dark Theme)
    ========================================================================== */
 :root.fluid-theme-codex,
 html.fluid-theme-codex,
@@ -99,13 +99,13 @@ html.fluid-theme-codex,
 /* ==========================================================================
    THEME: PURE GRADIO
    ========================================================================== */
-/* In Pure Gradio mode, native Gradio CSS variables, colors, and backgrounds
-   are preserved. Structural styling adapts cleanly to Gradio default tokens. */
+/* In Pure Gradio mode, all native Gradio theme variables, colors, typography,
+   and button styles are preserved natively without overrides. */
 .fluid-theme-pure-gradio {
-    /* Respect native Gradio fonts & variables */
+    /* Pure native Gradio styling */
 }
 
-/* Monospace & Data Elements */
+/* Monospace & Data Elements (Codex Only) */
 body.fluid-theme-codex input[type="number"],
 body.fluid-theme-codex .gr-text-input[type="number"],
 body.fluid-theme-codex .token-counter,
@@ -172,7 +172,7 @@ body.fluid-theme-codex textarea:focus {
     outline: none !important;
 }
 
-/* Sliders - Clean Crisp Minimalist Track & White Circular Thumb */
+/* Sliders - Clean Crisp Minimalist Track & White Circular Thumb (Codex Only) */
 body.fluid-theme-codex input[type="range"] {
     -webkit-appearance: none !important;
     appearance: none !important;
@@ -217,7 +217,7 @@ body.fluid-theme-codex input[type="range"]::-moz-range-thumb {
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5) !important;
 }
 
-/* Dropdowns & Selects */
+/* Dropdowns & Selects (Codex Only) */
 body.fluid-theme-codex .gradio-dropdown,
 body.fluid-theme-codex .gr-dropdown,
 body.fluid-theme-codex select,
@@ -245,7 +245,7 @@ body.fluid-theme-codex .gradio-dropdown ul li:hover {
     color: #ffffff !important;
 }
 
-/* Primary Action CTA (Generate Button) */
+/* Primary Action CTA (Generate Button - Codex Only) */
 body.fluid-theme-codex button.primary,
 body.fluid-theme-codex #txt2img_generate,
 body.fluid-theme-codex #img2img_generate {
@@ -255,7 +255,6 @@ body.fluid-theme-codex #img2img_generate {
     border-radius: 8px !important;
     font-weight: 600 !important;
     font-size: 14px !important;
-    padding: 10px 20px !important;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3) !important;
     transition: all 0.15s cubic-bezier(0.16, 1, 0.3, 1) !important;
     cursor: pointer !important;
@@ -269,11 +268,11 @@ body.fluid-theme-codex #img2img_generate:hover {
     box-shadow: 0 4px 14px rgba(255, 255, 255, 0.15) !important;
 }
 
-/* Secondary Buttons */
+/* Secondary Buttons (Codex Only) */
 body.fluid-theme-codex button.secondary,
 body.fluid-theme-codex .gr-button-secondary,
 body.fluid-theme-codex .tool,
-body.fluid-theme-codex button:not(.primary):not(#txt2img_generate):not(#img2img_generate):not(#txt2img_interrupt):not(#img2img_interrupt):not(#txt2img_skip):not(#img2img_skip) {
+body.fluid-theme-codex button:not(.primary):not(#txt2img_generate):not(#img2img_generate):not(#txt2img_interrupt):not(#img2img_interrupt):not(#txt2img_skip):not(#img2img_skip):not(.fluid-float-action-btn) {
     background: #252525 !important;
     color: #d4d4d4 !important;
     border: 1px solid #333333 !important;
@@ -287,7 +286,7 @@ body.fluid-theme-codex .tool:hover {
     border-color: #484848 !important;
 }
 
-/* Custom Scrollbars */
+/* Custom Scrollbars (Codex Only) */
 body.fluid-theme-codex ::-webkit-scrollbar {
     width: 6px;
     height: 6px;
@@ -341,15 +340,20 @@ body.fluid-hide-seed-batch.fluid-bone-codex-v1 .fluid-cockpit-grid,
     }
 }
 
-/* Bento Card Styling */
+/* Bento Card Structural Styling */
 .fluid-bento-card {
-    background: #202020 !important;
-    border: 1px solid #292929 !important;
     border-radius: 8px !important;
     padding: 8px 10px !important;
     display: flex !important;
     flex-direction: column !important;
     gap: 6px !important;
+    background: var(--panel-background-fill, var(--block-background-fill, var(--background-fill-secondary))) !important;
+    border: 1px solid var(--panel-border-color, var(--block-border-color, var(--border-color-primary))) !important;
+}
+
+body.fluid-theme-codex .fluid-bento-card {
+    background: #202020 !important;
+    border: 1px solid #292929 !important;
 }
 
 .fluid-bento-title {
@@ -357,10 +361,15 @@ body.fluid-hide-seed-batch.fluid-bone-codex-v1 .fluid-cockpit-grid,
     font-weight: 700 !important;
     text-transform: uppercase !important;
     letter-spacing: 0.04em !important;
-    color: #737373 !important;
-    border-bottom: 1px solid #282828 !important;
     padding-bottom: 4px !important;
     margin-bottom: 2px !important;
+    color: var(--block-label-text-color, var(--body-text-color-subdued, #888888)) !important;
+    border-bottom: 1px solid var(--border-color-primary, rgba(128, 128, 128, 0.2)) !important;
+}
+
+body.fluid-theme-codex .fluid-bento-title {
+    color: #737373 !important;
+    border-bottom: 1px solid #282828 !important;
 }
 
 .fluid-bento-content {
@@ -382,13 +391,18 @@ body.fluid-hide-seed-batch.fluid-bone-codex-v1 .fluid-cockpit-grid,
 
 /* Aspect Ratio Bar & Quick Matrix */
 .fluid-cockpit-aspect-bar {
-    background: #272727;
-    border: 1px solid #333333;
     border-radius: 6px;
     padding: 6px 8px;
     display: flex;
     flex-direction: column;
     gap: 6px;
+    background: var(--input-background-fill, var(--background-fill-secondary, transparent));
+    border: 1px solid var(--border-color-primary, rgba(128, 128, 128, 0.2));
+}
+
+body.fluid-theme-codex .fluid-cockpit-aspect-bar {
+    background: #272727;
+    border: 1px solid #333333;
 }
 
 .fluid-aspect-header {
@@ -406,19 +420,35 @@ body.fluid-hide-seed-batch.fluid-bone-codex-v1 .fluid-cockpit-grid,
 }
 
 .fluid-ratio-pill {
-    background: #202020;
-    border: 1px solid #333333;
-    color: #a0a0a0;
     border-radius: 4px;
     padding: 3px 7px;
     font-size: 11px;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.15s ease;
+    background: var(--button-secondary-background-fill, var(--background-fill-secondary));
+    border: 1px solid var(--button-secondary-border-color, var(--border-color-primary));
+    color: var(--button-secondary-text-color, var(--body-text-color));
 }
 
-.fluid-ratio-pill:hover,
+.fluid-ratio-pill:hover {
+    background: var(--button-secondary-background-fill-hover, var(--background-fill-primary));
+}
+
 .fluid-ratio-pill.active {
+    background: var(--button-primary-background-fill, var(--primary-500, #ff7c00));
+    color: var(--button-primary-text-color, #ffffff);
+    border-color: var(--button-primary-border-color, transparent);
+}
+
+body.fluid-theme-codex .fluid-ratio-pill {
+    background: #202020;
+    border: 1px solid #333333;
+    color: #a0a0a0;
+}
+
+body.fluid-theme-codex .fluid-ratio-pill:hover,
+body.fluid-theme-codex .fluid-ratio-pill.active {
     background: #383838;
     color: #ffffff;
     border-color: #555555;
@@ -435,6 +465,10 @@ body.fluid-hide-seed-batch.fluid-bone-codex-v1 .fluid-cockpit-grid,
     align-items: center;
     gap: 3px;
     font-size: 11px;
+    color: var(--body-text-color-subdued, #888888);
+}
+
+body.fluid-theme-codex .fluid-base-picker {
     color: #737373;
 }
 
@@ -445,34 +479,62 @@ body.fluid-hide-seed-batch.fluid-bone-codex-v1 .fluid-cockpit-grid,
 }
 
 .fluid-base-pill {
-    background: #202020;
-    border: 1px solid #333333;
-    color: #8e8e8e;
     border-radius: 4px;
     padding: 2px 5px;
     font-size: 10px;
     cursor: pointer;
     transition: all 0.15s ease;
+    background: var(--button-secondary-background-fill, var(--background-fill-secondary));
+    border: 1px solid var(--button-secondary-border-color, var(--border-color-primary));
+    color: var(--button-secondary-text-color, var(--body-text-color-subdued));
 }
 
-.fluid-base-pill:hover,
+.fluid-base-pill:hover {
+    background: var(--button-secondary-background-fill-hover, var(--background-fill-primary));
+}
+
 .fluid-base-pill.active {
+    background: var(--button-primary-background-fill, var(--primary-500, #ff7c00));
+    color: var(--button-primary-text-color, #ffffff);
+    border-color: var(--button-primary-border-color, transparent);
+}
+
+body.fluid-theme-codex .fluid-base-pill {
+    background: #202020;
+    border: 1px solid #333333;
+    color: #8e8e8e;
+}
+
+body.fluid-theme-codex .fluid-base-pill:hover,
+body.fluid-theme-codex .fluid-base-pill.active {
     background: #383838;
     color: #ffffff;
     border-color: #555555;
 }
 
 .fluid-aspect-lock {
-    background: #202020;
-    border: 1px solid #333333;
     border-radius: 4px;
     padding: 2px 5px;
     font-size: 11px;
     cursor: pointer;
     transition: all 0.15s ease;
+    background: var(--button-secondary-background-fill, var(--background-fill-secondary));
+    border: 1px solid var(--button-secondary-border-color, var(--border-color-primary));
+    color: var(--body-text-color);
 }
 
 .fluid-aspect-lock.active {
+    background: rgba(34, 197, 94, 0.15);
+    border-color: #22c55e;
+    color: #22c55e;
+}
+
+body.fluid-theme-codex .fluid-aspect-lock {
+    background: #202020;
+    border: 1px solid #333333;
+}
+
+body.fluid-theme-codex .fluid-aspect-lock.active {
     background: #1a2e1d;
     border-color: #22c55e;
     color: #22c55e;
@@ -499,30 +561,49 @@ body.fluid-hide-seed-batch.fluid-bone-codex-v1 .fluid-cockpit-grid,
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
+    border-radius: 6px !important;
+    cursor: pointer !important;
+    background: var(--button-secondary-background-fill, var(--background-fill-secondary)) !important;
+    border: 1px solid var(--button-secondary-border-color, var(--border-color-primary)) !important;
+    color: var(--button-secondary-text-color, var(--body-text-color)) !important;
+}
+
+body.fluid-theme-codex #txt2img_res_switch_btn,
+body.fluid-theme-codex #img2img_res_switch_btn {
     background: #272727 !important;
     border: 1px solid #333333 !important;
-    border-radius: 6px !important;
+    color: #d4d4d4 !important;
 }
 
 /* Live Resolution Badge */
 .fluid-res-badge {
     font-size: 11px;
-    color: #737373;
     text-align: center;
-    background: #272727;
-    border: 1px solid #333333;
     border-radius: 6px;
     padding: 4px 6px;
+    background: var(--input-background-fill, var(--background-fill-secondary));
+    border: 1px solid var(--border-color-primary, rgba(128, 128, 128, 0.2));
+    color: var(--body-text-color-subdued, #888888);
+}
+
+body.fluid-theme-codex .fluid-res-badge {
+    background: #272727;
+    border: 1px solid #333333;
+    color: #737373;
 }
 
 .fluid-res-dim {
-    color: #ffffff;
     font-weight: 600;
     font-family: var(--font-mono, monospace);
+    color: var(--body-text-color, #ffffff);
+}
+
+body.fluid-theme-codex .fluid-res-dim {
+    color: #ffffff;
 }
 
 .fluid-res-mp {
-    color: #a0a0a0;
+    color: var(--body-text-color-subdued, #a0a0a0);
 }
 
 .fluid-res-vram {
@@ -532,9 +613,6 @@ body.fluid-hide-seed-batch.fluid-bone-codex-v1 .fluid-cockpit-grid,
 
 /* Micro-Steppers for Batching */
 .fluid-stepper-btn {
-    background: #272727;
-    border: 1px solid #333333;
-    color: #d4d4d4;
     border-radius: 4px;
     width: 24px;
     height: 24px;
@@ -547,9 +625,22 @@ body.fluid-hide-seed-batch.fluid-bone-codex-v1 .fluid-cockpit-grid,
     margin: 0 3px;
     transition: all 0.12s ease;
     vertical-align: middle;
+    background: var(--button-secondary-background-fill, var(--background-fill-secondary));
+    border: 1px solid var(--button-secondary-border-color, var(--border-color-primary));
+    color: var(--button-secondary-text-color, var(--body-text-color));
 }
 
 .fluid-stepper-btn:hover {
+    background: var(--button-secondary-background-fill-hover, var(--background-fill-primary));
+}
+
+body.fluid-theme-codex .fluid-stepper-btn {
+    background: #272727;
+    border: 1px solid #333333;
+    color: #d4d4d4;
+}
+
+body.fluid-theme-codex .fluid-stepper-btn:hover {
     background: #383838;
     color: #ffffff;
     border-color: #555555;
@@ -569,12 +660,17 @@ body.fluid-bone-codex-v1 #img2img_batch_size {
    UNIFIED QUICK MODULES DOCK (OPTION C: ZERO STACK CHIP DOCK)
    ========================================================================== */
 .fluid-accordion-dock {
-    background: #1c1c1c !important;
-    border: 1px solid #282828 !important;
     border-radius: 9px !important;
     padding: 9px 12px !important;
     margin: 6px 0 8px 0 !important;
     width: 100% !important;
+    background: var(--panel-background-fill, var(--block-background-fill, var(--background-fill-secondary))) !important;
+    border: 1px solid var(--panel-border-color, var(--block-border-color, var(--border-color-primary))) !important;
+}
+
+body.fluid-theme-codex .fluid-accordion-dock {
+    background: #1c1c1c !important;
+    border: 1px solid #282828 !important;
 }
 
 .fluid-dock-header {
@@ -583,6 +679,10 @@ body.fluid-bone-codex-v1 #img2img_batch_size {
     align-items: center !important;
     margin-bottom: 8px !important;
     padding-bottom: 5px !important;
+    border-bottom: 1px solid var(--border-color-primary, rgba(128, 128, 128, 0.2)) !important;
+}
+
+body.fluid-theme-codex .fluid-dock-header {
     border-bottom: 1px solid #242424 !important;
 }
 
@@ -591,13 +691,21 @@ body.fluid-bone-codex-v1 #img2img_batch_size {
     font-weight: 700 !important;
     text-transform: uppercase !important;
     letter-spacing: 0.05em !important;
+    color: var(--block-label-text-color, var(--body-text-color-subdued, #888888)) !important;
+}
+
+body.fluid-theme-codex .fluid-dock-title {
     color: #737373 !important;
 }
 
 .fluid-dock-badge {
     font-size: 10px !important;
-    color: #555555 !important;
     font-family: var(--font-mono, monospace) !important;
+    color: var(--body-text-color-subdued, #888888) !important;
+}
+
+body.fluid-theme-codex .fluid-dock-badge {
+    color: #555555 !important;
 }
 
 .fluid-dock-chips {
@@ -607,9 +715,6 @@ body.fluid-bone-codex-v1 #img2img_batch_size {
 }
 
 .fluid-dock-chip {
-    background: #232323 !important;
-    border: 1px solid #303030 !important;
-    color: #a8a8a8 !important;
     border-radius: 7px !important;
     padding: 5px 12px !important;
     min-height: 30px !important;
@@ -622,24 +727,46 @@ body.fluid-bone-codex-v1 #img2img_batch_size {
     transition: all 0.15s ease !important;
     user-select: none !important;
     box-sizing: border-box !important;
+    background: var(--button-secondary-background-fill, var(--background-fill-secondary)) !important;
+    border: 1px solid var(--button-secondary-border-color, var(--border-color-primary)) !important;
+    color: var(--button-secondary-text-color, var(--body-text-color)) !important;
 }
 
 .fluid-dock-chip:hover {
+    background: var(--button-secondary-background-fill-hover, var(--background-fill-primary)) !important;
+}
+
+.fluid-dock-chip.panel-open {
+    background: var(--button-secondary-background-fill-hover, var(--background-fill-primary)) !important;
+    color: var(--body-text-color, #ffffff) !important;
+    border-color: var(--border-color-accent, var(--primary-500, #ff7c00)) !important;
+    font-weight: 600 !important;
+}
+
+.fluid-dock-chip.is-enabled {
+    border-color: rgba(34, 197, 94, 0.5) !important;
+}
+
+body.fluid-theme-codex .fluid-dock-chip {
+    background: #232323 !important;
+    border: 1px solid #303030 !important;
+    color: #a8a8a8 !important;
+}
+
+body.fluid-theme-codex .fluid-dock-chip:hover {
     background: #2c2c2c !important;
     color: #ffffff !important;
     border-color: #444444 !important;
 }
 
-/* Active Panel Open Drawer State */
-.fluid-dock-chip.panel-open {
+body.fluid-theme-codex .fluid-dock-chip.panel-open {
     background: #333333 !important;
     color: #ffffff !important;
     border-color: #666666 !important;
     box-shadow: 0 0 8px rgba(255, 255, 255, 0.12) !important;
-    font-weight: 600 !important;
 }
 
-.fluid-dock-chip.is-enabled {
+body.fluid-theme-codex .fluid-dock-chip.is-enabled {
     border-color: rgba(34, 197, 94, 0.4) !important;
     color: #e0e0e0 !important;
 }
@@ -659,9 +786,6 @@ body.fluid-bone-codex-v1 #img2img_batch_size {
 }
 
 .fluid-chip-sub-btn {
-    background: #181818 !important;
-    border: 1px solid #383838 !important;
-    color: #9e9e9e !important;
     border-radius: 5px !important;
     padding: 2px 7px !important;
     font-size: 11px !important;
@@ -673,20 +797,39 @@ body.fluid-bone-codex-v1 #img2img_batch_size {
     display: inline-flex !important;
     align-items: center !important;
     box-sizing: border-box !important;
+    background: var(--input-background-fill, var(--background-fill-primary)) !important;
+    border: 1px solid var(--border-color-primary) !important;
+    color: var(--body-text-color-subdued, #888888) !important;
 }
 
 .fluid-chip-sub-btn:hover {
+    background: var(--button-secondary-background-fill-hover, var(--background-fill-secondary)) !important;
+}
+
+.fluid-chip-sub-btn.active {
+    background: rgba(34, 197, 94, 0.2) !important;
+    border-color: #22c55e !important;
+    color: #22c55e !important;
+    font-weight: 700 !important;
+}
+
+body.fluid-theme-codex .fluid-chip-sub-btn {
+    background: #181818 !important;
+    border: 1px solid #383838 !important;
+    color: #9e9e9e !important;
+}
+
+body.fluid-theme-codex .fluid-chip-sub-btn:hover {
     background: #282828 !important;
     color: #ffffff !important;
     border-color: #555555 !important;
 }
 
-.fluid-chip-sub-btn.active {
+body.fluid-theme-codex .fluid-chip-sub-btn.active {
     background: #143321 !important;
     border-color: #22c55e !important;
     color: #4ade80 !important;
     box-shadow: 0 0 8px rgba(34, 197, 94, 0.4) !important;
-    font-weight: 700 !important;
 }
 
 .fluid-chip-dot {
@@ -695,17 +838,21 @@ body.fluid-bone-codex-v1 #img2img_batch_size {
     min-width: 10px !important;
     min-height: 10px !important;
     border-radius: 50% !important;
-    background: #484848 !important;
-    border: 1px solid #5a5a5a !important;
     box-sizing: border-box !important;
     flex-shrink: 0 !important;
     display: inline-block !important;
     transition: all 0.15s cubic-bezier(0.16, 1, 0.3, 1) !important;
     cursor: pointer !important;
     position: relative !important;
+    background: var(--border-color-primary, #6b7280) !important;
+    border: 1px solid var(--border-color-accent, #9ca3af) !important;
 }
 
-/* Expanded Touch Hitbox for Mobile/Mouse convenience (~22px touch area) */
+body.fluid-theme-codex .fluid-chip-dot {
+    background: #484848 !important;
+    border: 1px solid #5a5a5a !important;
+}
+
 .fluid-chip-dot::before {
     content: '';
     position: absolute;
@@ -717,7 +864,6 @@ body.fluid-bone-codex-v1 #img2img_batch_size {
 
 .fluid-chip-dot:hover {
     transform: scale(1.18) !important;
-    border-color: #888888 !important;
 }
 
 .fluid-chip-dot.active {
@@ -733,7 +879,6 @@ body.fluid-bone-codex-v1 #img2img_batch_size {
 /* ==========================================================================
    STREAMLINED ACCORDIONS & DRAWER CONTAINER
    ========================================================================== */
-/* Reset accordion wrapper containers to avoid empty space when closed */
 body.fluid-bone-codex-v1 #txt2img_accordions,
 body.fluid-bone-codex-v1 #img2img_accordions,
 body.fluid-bone-codex-v1 #txt2img_script_container,
@@ -747,30 +892,35 @@ body.fluid-bone-codex-v1 .accordions {
     background: transparent !important;
 }
 
-/* ControlNet wrapper group follows docked state */
 body.fluid-bone-codex-v1 #txt2img_controlnet:not(:has(.fluid-drawer-open)),
 body.fluid-bone-codex-v1 #img2img_controlnet:not(:has(.fluid-drawer-open)) {
     display: none !important;
 }
 
-/* When in Codex v1 Bone: Closed docked accordions take zero vertical stack */
 body.fluid-bone-codex-v1 .fluid-docked-accordion:not(.fluid-drawer-open) {
     display: none !important;
 }
 
-/* Open Accordions in Codex v1 Bone: Expand as a focused, sleek configuration drawer */
+/* Open Accordions in Codex v1 Bone: Expand as a focused drawer */
 body.fluid-bone-codex-v1 .gradio-accordion:not(.fluid-docked-accordion).open,
 body.fluid-bone-codex-v1 .input-accordion:not(.fluid-docked-accordion).input-accordion-open,
 body.fluid-bone-codex-v1 .gradio-accordion:not(.fluid-docked-accordion):has(.open),
 body.fluid-bone-codex-v1 .fluid-docked-accordion.fluid-drawer-open {
     display: block !important;
     margin: 6px 0 10px 0 !important;
-    border: 1px solid #383838 !important;
     border-radius: 6px !important;
-    background: #1c1c1c !important;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4) !important;
     overflow: hidden !important;
     animation: fluidFadeSlide 0.15s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    background: var(--block-background-fill, var(--panel-background-fill, var(--background-fill-secondary))) !important;
+    border: 1px solid var(--block-border-color, var(--border-color-primary)) !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2) !important;
+}
+
+body.fluid-theme-codex.fluid-bone-codex-v1 .fluid-docked-accordion.fluid-drawer-open,
+body.fluid-theme-codex.fluid-bone-codex-v1 .gradio-accordion:not(.fluid-docked-accordion).open {
+    border: 1px solid #383838 !important;
+    background: #1c1c1c !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4) !important;
 }
 
 @keyframes fluidFadeSlide {
@@ -790,40 +940,55 @@ body.fluid-bone-codex-v1 .fluid-docked-accordion.fluid-drawer-open > .label-wrap
     min-height: 28px !important;
     height: 28px !important;
     padding: 0 10px !important;
-    background: #252525 !important;
-    border-bottom: 1px solid #2e2e2e !important;
     border-radius: 5px 5px 0 0 !important;
     opacity: 1 !important;
     display: flex !important;
     align-items: center !important;
     justify-content: space-between !important;
     cursor: pointer !important;
+    background: var(--background-fill-secondary, var(--panel-background-fill)) !important;
+    border-bottom: 1px solid var(--border-color-primary) !important;
 }
 
 body.fluid-bone-codex-v1 .gradio-accordion:not(.fluid-docked-accordion).open > .label-wrap span,
 body.fluid-bone-codex-v1 .input-accordion:not(.fluid-docked-accordion).input-accordion-open > .label-wrap span,
 body.fluid-bone-codex-v1 .fluid-docked-accordion.fluid-drawer-open > .label-wrap span {
-    color: #ffffff !important;
     font-weight: 600 !important;
     font-size: 11.5px !important;
+    color: var(--body-text-color, inherit) !important;
+}
+
+body.fluid-theme-codex.fluid-bone-codex-v1 .fluid-docked-accordion.fluid-drawer-open > .label-wrap {
+    background: #252525 !important;
+    border-bottom: 1px solid #2e2e2e !important;
+}
+
+body.fluid-theme-codex.fluid-bone-codex-v1 .fluid-docked-accordion.fluid-drawer-open > .label-wrap span {
+    color: #ffffff !important;
 }
 
 /* Open Drawer Header Close Button */
 .fluid-drawer-close-btn {
     font-size: 10.5px !important;
     font-weight: 600 !important;
-    color: #888888 !important;
-    background: #1e1e1e !important;
-    border: 1px solid #333333 !important;
     border-radius: 4px !important;
     padding: 2px 7px !important;
     margin-left: auto !important;
     cursor: pointer !important;
     transition: all 0.15s ease !important;
     user-select: none !important;
+    background: var(--button-secondary-background-fill, var(--background-fill-primary)) !important;
+    border: 1px solid var(--button-secondary-border-color, var(--border-color-primary)) !important;
+    color: var(--button-secondary-text-color, var(--body-text-color-subdued, #888888)) !important;
 }
 
-.fluid-drawer-close-btn:hover {
+body.fluid-theme-codex .fluid-drawer-close-btn {
+    color: #888888 !important;
+    background: #1e1e1e !important;
+    border: 1px solid #333333 !important;
+}
+
+body.fluid-theme-codex .fluid-drawer-close-btn:hover {
     color: #ffffff !important;
     background: #2e2e2e !important;
     border-color: #555555 !important;
@@ -834,9 +999,13 @@ body.fluid-bone-codex-v1 .gradio-accordion > div:not(.label-wrap),
 body.fluid-bone-codex-v1 .gr-accordion > div:not(.label-wrap),
 body.fluid-bone-codex-v1 .input-accordion > div:not(.label-wrap),
 body.fluid-bone-codex-v1 .fluid-docked-accordion > div:not(.label-wrap) {
-    background: #181818 !important;
     padding: 10px !important;
     border-top: none !important;
+}
+
+body.fluid-theme-codex.fluid-bone-codex-v1 .fluid-docked-accordion > div:not(.label-wrap),
+body.fluid-theme-codex.fluid-bone-codex-v1 .gradio-accordion > div:not(.label-wrap) {
+    background: #181818 !important;
 }
 
 /* Hires Fix & Nested Forms Internal Layout */
@@ -876,24 +1045,30 @@ body.fluid-bone-codex-v1 #txt2img_hires_fix_row_cfg > * {
         height: 28px !important;
         min-height: 28px !important;
         max-height: 28px !important;
-        background: #202020 !important;
-        border: 1px solid #303030 !important;
-        color: #d4d4d4 !important;
         padding: 0 12px !important;
         margin: 6px 0 8px 0 !important;
         border-radius: 6px !important;
-        font-family: var(--font) !important;
         font-size: 11.5px !important;
         font-weight: 600 !important;
         letter-spacing: 0.02em !important;
         z-index: 100 !important;
         cursor: pointer !important;
-        box-shadow: 0 1px 4px rgba(0,0,0,0.3) !important;
+        box-shadow: 0 1px 4px rgba(0,0,0,0.2) !important;
         transition: all 0.15s ease !important;
+        background: var(--button-secondary-background-fill, var(--background-fill-secondary)) !important;
+        border: 1px solid var(--button-secondary-border-color, var(--border-color-primary)) !important;
+        color: var(--button-secondary-text-color, var(--body-text-color)) !important;
     }
 
-    .fluid-mobile-toggle:hover,
-    .fluid-mobile-toggle:active {
+    body.fluid-theme-codex .fluid-mobile-toggle {
+        background: #202020 !important;
+        border: 1px solid #303030 !important;
+        color: #d4d4d4 !important;
+        box-shadow: 0 1px 4px rgba(0,0,0,0.3) !important;
+    }
+
+    body.fluid-theme-codex .fluid-mobile-toggle:hover,
+    body.fluid-theme-codex .fluid-mobile-toggle:active {
         background: #282828 !important;
         border-color: #484848 !important;
         color: #ffffff !important;
@@ -906,12 +1081,17 @@ body.fluid-bone-codex-v1 #txt2img_hires_fix_row_cfg > * {
         align-items: center !important;
         margin-bottom: 12px !important;
         padding-bottom: 8px !important;
-        border-bottom: 1px solid #282828 !important;
+        border-bottom: 1px solid var(--border-color-primary, rgba(128, 128, 128, 0.2)) !important;
         position: sticky !important;
         top: 0 !important;
-        background: #181818 !important;
+        background: var(--panel-background-fill, var(--background-fill-primary)) !important;
         z-index: 100 !important;
         width: 100% !important;
+    }
+
+    body.fluid-theme-codex .fluid-sheet-header {
+        border-bottom: 1px solid #282828 !important;
+        background: #181818 !important;
     }
 
     .fluid-sheet-handle {
@@ -933,23 +1113,29 @@ body.fluid-bone-codex-v1 #txt2img_hires_fix_row_cfg > * {
     .fluid-sheet-title {
         font-size: 13px !important;
         font-weight: 700 !important;
-        color: #ffffff !important;
         letter-spacing: 0.02em !important;
+        color: var(--body-text-color, #ffffff) !important;
     }
 
     .fluid-sheet-done-btn {
-        background: #272727 !important;
-        border: 1px solid #383838 !important;
-        color: #e5e5e5 !important;
         font-size: 11.5px !important;
         font-weight: 600 !important;
         border-radius: 6px !important;
         padding: 4px 10px !important;
         cursor: pointer !important;
         transition: all 0.15s ease !important;
+        background: var(--button-secondary-background-fill, var(--background-fill-secondary)) !important;
+        border: 1px solid var(--button-secondary-border-color, var(--border-color-primary)) !important;
+        color: var(--button-secondary-text-color, var(--body-text-color)) !important;
     }
 
-    .fluid-sheet-done-btn:hover {
+    body.fluid-theme-codex .fluid-sheet-done-btn {
+        background: #272727 !important;
+        border: 1px solid #383838 !important;
+        color: #e5e5e5 !important;
+    }
+
+    body.fluid-theme-codex .fluid-sheet-done-btn:hover {
         background: #333333 !important;
         color: #ffffff !important;
     }
@@ -961,15 +1147,22 @@ body.fluid-bone-codex-v1 #txt2img_hires_fix_row_cfg > * {
         width: 100vw !important;
         height: 50vh !important;
         max-height: 50vh !important;
-        background: #181818 !important;
         z-index: 10001 !important;
         transform: translateY(105%) !important;
         transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
         overflow-y: auto !important;
         -webkit-overflow-scrolling: touch !important;
-        border-top: 1px solid #333333 !important;
         border-radius: 16px 16px 0 0 !important;
         padding: 10px 14px 60px 14px !important;
+        background: var(--body-background-fill, var(--background-fill-primary)) !important;
+        border-top: 1px solid var(--border-color-primary, #333333) !important;
+        box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.7) !important;
+    }
+
+    body.fluid-theme-codex #txt2img_settings,
+    body.fluid-theme-codex #img2img_settings {
+        background: #181818 !important;
+        border-top: 1px solid #333333 !important;
         box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.95) !important;
     }
 
@@ -991,37 +1184,21 @@ body.fluid-bone-codex-v1 #txt2img_hires_fix_row_cfg > * {
         flex-direction: row !important;
         align-items: stretch !important;
         gap: 6px !important;
-        background: rgba(20, 20, 20, 0.95) !important;
         backdrop-filter: blur(12px) !important;
         -webkit-backdrop-filter: blur(12px) !important;
         padding: 4px !important;
         border-radius: 14px !important;
-        border: 1px solid rgba(255, 255, 255, 0.12) !important;
-        box-shadow: 0 8px 32px rgba(0,0,0,0.85) !important;
-        transition: opacity 0.3s ease, transform 0.3s ease !important;
         box-sizing: border-box !important;
+        background: var(--panel-background-fill, rgba(20, 20, 20, 0.95)) !important;
+        border: 1px solid var(--border-color-primary, rgba(255, 255, 255, 0.12)) !important;
+        box-shadow: 0 8px 32px rgba(0,0,0,0.6) !important;
     }
 
-    #txt2img_generate, #img2img_generate {
-        position: static !important;
-        height: 100% !important;
-        min-height: 0 !important;
-        max-height: 100% !important;
-        padding: 0 10px !important;
-        box-sizing: border-box !important;
-        flex: 1.6 1 0 !important;
-        min-width: 0 !important;
-        background: #f4f4f4 !important;
-        color: #181818 !important;
-        font-size: 13px !important;
-        font-weight: 700 !important;
-        border: 1px solid #f4f4f4 !important;
-        border-radius: 10px !important;
-        cursor: pointer !important;
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-        white-space: nowrap !important;
+    body.fluid-theme-codex #txt2img_generate_box,
+    body.fluid-theme-codex #img2img_generate_box {
+        background: rgba(20, 20, 20, 0.95) !important;
+        border: 1px solid rgba(255, 255, 255, 0.12) !important;
+        box-shadow: 0 8px 32px rgba(0,0,0,0.85) !important;
     }
 
     .fluid-backdrop {
@@ -1035,7 +1212,7 @@ body.fluid-bone-codex-v1 #txt2img_hires_fix_row_cfg > * {
         pointer-events: none !important;
         transition: opacity 0.3s ease !important;
     }
-    
+
     body.fluid-sheet-open .fluid-backdrop {
         opacity: 1 !important;
         pointer-events: all !important;
@@ -1043,8 +1220,8 @@ body.fluid-bone-codex-v1 #txt2img_hires_fix_row_cfg > * {
 }
 
 /* Gradio Dropdown Fix */
-.gr-dropdown-list, 
-.options, 
+.gr-dropdown-list,
+.options,
 ul.options,
 .gradio-dropdown ul,
 .svelte-10z6qve ul {
@@ -1052,16 +1229,21 @@ ul.options,
 }
 
 /* ==========================================================================
-   QUICKSETTINGS & TOP BAR STUDIO OVERHAUL
+   QUICKSETTINGS & TOP BAR
    ========================================================================== */
 .qs-wrap {
     margin-bottom: 8px !important;
-    border: 1px solid #282828 !important;
     border-radius: 8px !important;
-    background: #1c1c1c !important;
     padding: 0 !important;
     overflow: hidden !important;
     box-shadow: none !important;
+    background: var(--panel-background-fill, var(--block-background-fill, var(--background-fill-secondary))) !important;
+    border: 1px solid var(--panel-border-color, var(--block-border-color, var(--border-color-primary))) !important;
+}
+
+body.fluid-theme-codex .qs-wrap {
+    border: 1px solid #282828 !important;
+    background: #1c1c1c !important;
 }
 
 .qs-bar {
@@ -1078,10 +1260,7 @@ ul.options,
     font-weight: 700 !important;
     text-transform: uppercase !important;
     letter-spacing: 0.05em !important;
-    color: #888888 !important;
-    background: #202020 !important;
     border: none !important;
-    border-bottom: 1px solid #282828 !important;
     border-radius: 0 !important;
     cursor: pointer !important;
     padding: 0 10px !important;
@@ -1089,21 +1268,28 @@ ul.options,
     align-items: center !important;
     justify-content: center !important;
     transition: all 0.15s ease !important;
+    background: var(--background-fill-secondary, var(--panel-background-fill)) !important;
+    border-bottom: 1px solid var(--border-color-primary, rgba(128, 128, 128, 0.2)) !important;
+    color: var(--body-text-color-subdued, #888888) !important;
 }
 
 .qs-toggle:hover {
+    background: var(--button-secondary-background-fill-hover, var(--background-fill-primary)) !important;
+}
+
+body.fluid-theme-codex .qs-toggle {
+    color: #888888 !important;
+    background: #202020 !important;
+    border-bottom: 1px solid #282828 !important;
+}
+
+body.fluid-theme-codex .qs-toggle:hover {
     color: #ffffff !important;
     background: #282828 !important;
 }
 
 .qs-wrap.collapsed .qs-toggle {
     border-bottom: none !important;
-}
-
-.qs-wrap.collapsed {
-    border: 1px solid #282828 !important;
-    border-radius: 6px !important;
-    background: #1c1c1c !important;
 }
 
 /* Hiding logic for collapsed state */
@@ -1121,10 +1307,14 @@ ul.options,
     align-items: flex-start !important;
     gap: 8px !important;
     padding: 8px 10px !important;
-    background: #181818 !important;
     width: 100% !important;
     box-sizing: border-box !important;
     border: none !important;
+}
+
+body.fluid-theme-codex .qs-wrap:not(.collapsed) > #quicksettings,
+body.fluid-theme-codex #quicksettings:not(.qs-wrap.collapsed > #quicksettings) {
+    background: #181818 !important;
 }
 
 #quicksettings > * {
@@ -1177,13 +1367,17 @@ ul.options,
     font-weight: 700 !important;
     text-transform: uppercase !important;
     letter-spacing: 0.03em !important;
-    color: #888888 !important;
     margin-bottom: 3px !important;
 }
 
-#quicksettings input,
-#quicksettings select,
-#quicksettings .secondary-wrap {
+body.fluid-theme-codex #quicksettings label {
+    color: #888888 !important;
+}
+
+/* Quicksettings Input Overrides (Codex Only) */
+body.fluid-theme-codex #quicksettings input,
+body.fluid-theme-codex #quicksettings select,
+body.fluid-theme-codex #quicksettings .secondary-wrap {
     background-color: #242424 !important;
     border: 1px solid #333333 !important;
     border-radius: 6px !important;
@@ -1195,9 +1389,6 @@ ul.options,
 #quicksettings .token,
 #quicksettings .token-remove,
 #quicksettings div.token {
-    background: #2a2a2a !important;
-    border: 1px solid #3a3a3a !important;
-    color: #e5e5e5 !important;
     border-radius: 4px !important;
     padding: 2px 6px !important;
     font-size: 11px !important;
@@ -1210,6 +1401,14 @@ ul.options,
     min-width: 0 !important;
     box-sizing: border-box !important;
     overflow: hidden !important;
+}
+
+body.fluid-theme-codex #quicksettings .token,
+body.fluid-theme-codex #quicksettings .token-remove,
+body.fluid-theme-codex #quicksettings div.token {
+    background: #2a2a2a !important;
+    border: 1px solid #3a3a3a !important;
+    color: #e5e5e5 !important;
 }
 
 #quicksettings .token span:not(.token-remove),
@@ -1236,16 +1435,19 @@ ul.options,
     display: inline-flex !important;
     align-items: center !important;
     justify-content: center !important;
-    background: #242424 !important;
-    border: 1px solid #333333 !important;
     border-radius: 6px !important;
-    color: #d4d4d4 !important;
     cursor: pointer !important;
     align-self: flex-end !important;
     margin-bottom: 2px !important;
 }
 
-#quicksettings button.tool:hover {
+body.fluid-theme-codex #quicksettings button.tool {
+    background: #242424 !important;
+    border: 1px solid #333333 !important;
+    color: #d4d4d4 !important;
+}
+
+body.fluid-theme-codex #quicksettings button.tool:hover {
     background: #303030 !important;
     border-color: #555555 !important;
     color: #ffffff !important;
@@ -1314,9 +1516,6 @@ ul.options,
     font-size: 11.5px !important;
     font-weight: 600 !important;
     border-radius: 8px !important;
-    border: 1px solid #333333 !important;
-    background: #202020 !important;
-    color: #e0e0e0 !important;
     cursor: pointer !important;
     display: flex !important;
     justify-content: center !important;
@@ -1325,19 +1524,34 @@ ul.options,
     text-overflow: ellipsis !important;
     overflow: hidden !important;
     transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.3) !important;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2) !important;
+    background: var(--button-secondary-background-fill, var(--background-fill-secondary)) !important;
+    border: 1px solid var(--button-secondary-border-color, var(--border-color-primary)) !important;
+    color: var(--button-secondary-text-color, var(--body-text-color)) !important;
 }
 
 .fluid-float-action-btn:hover {
-    border-color: #555555 !important;
-    background: #2a2a2a !important;
-    color: #ffffff !important;
+    background: var(--button-secondary-background-fill-hover, var(--background-fill-primary)) !important;
     transform: translateY(-1px) !important;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.4) !important;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3) !important;
 }
 
 .fluid-float-action-btn:active {
     transform: translateY(0) !important;
+}
+
+body.fluid-theme-codex .fluid-float-action-btn {
+    background: #202020 !important;
+    border: 1px solid #333333 !important;
+    color: #e0e0e0 !important;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3) !important;
+}
+
+body.fluid-theme-codex .fluid-float-action-btn:hover {
+    border-color: #555555 !important;
+    background: #2a2a2a !important;
+    color: #ffffff !important;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.4) !important;
 }
 
 .fluid-float-action-btn.btn-success {
@@ -1355,16 +1569,24 @@ ul.options,
         width: calc(100vw - 24px) !important;
         height: 50px !important;
         z-index: 10000 !important;
-        background: rgba(20, 20, 20, 0.95) !important;
         backdrop-filter: blur(12px) !important;
         -webkit-backdrop-filter: blur(12px) !important;
         padding: 4px !important;
         border-radius: 14px !important;
+        box-sizing: border-box !important;
+        margin: 0 !important;
+        background: var(--panel-background-fill, rgba(20, 20, 20, 0.95)) !important;
+        border: 1px solid var(--border-color-primary, rgba(255, 255, 255, 0.12)) !important;
+        box-shadow: 0 8px 32px rgba(0,0,0,0.6) !important;
+    }
+
+    body.fluid-theme-codex #txt2img_generate_box,
+    body.fluid-theme-codex #img2img_generate_box {
+        background: rgba(20, 20, 20, 0.95) !important;
         border: 1px solid rgba(255, 255, 255, 0.12) !important;
         box-shadow: 0 8px 32px rgba(0,0,0,0.85) !important;
-        margin: 0 !important;
     }
-    
+
     #txt2img_generate,
     #img2img_generate {
         height: 100% !important;
@@ -1372,7 +1594,7 @@ ul.options,
         border-radius: 10px !important;
         font-size: 13px !important;
     }
-    
+
     .fluid-float-action-btn {
         height: 100% !important;
         flex: 1 1 0 !important;
@@ -1381,4 +1603,3 @@ ul.options,
         padding: 2px 2px !important;
     }
 }
-
