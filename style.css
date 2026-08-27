@@ -1297,8 +1297,202 @@ body.fluid-theme-pro-max .fluid-chip-dot {
 }
 
 /* ==========================================================================
-   STREAMLINED ACCORDIONS & DRAWER CONTAINER
+   UNIFIED PROMPT & TOOLS ACCORDION / TOGGLE MICRO-DESIGN SYSTEM
+   Standardizes all 5 stacked prompt/tool/parameter control bars:
+   1. Positive Prompt Accordion (details.custom-prompt-accordion > summary)
+   2. Negative Prompt Collapse (.np-wrap .np-toggle)
+   3. Segmented Prompt Builder (#segmented_prompt_accordion_* > .label-wrap)
+   4. Configure Parameters Mobile Toggle (.fluid-mobile-toggle)
+   5. Tools Collapse Button (#txt2img_collapse_btn, #img2img_collapse_btn)
    ========================================================================== */
+
+/* Universal Strip Dimensions, Reset & Layout */
+details.custom-prompt-accordion > summary,
+.np-wrap.collapsed .np-toggle,
+.np-wrap:not(.collapsed) .np-bar,
+.np-toggle,
+#segmented_prompt_accordion_txt2img > .label-wrap,
+#segmented_prompt_accordion_img2img > .label-wrap,
+.fluid-mobile-toggle,
+#txt2img_collapse_btn,
+#img2img_collapse_btn {
+    height: 32px !important;
+    min-height: 32px !important;
+    max-height: 32px !important;
+    padding: 0 12px !important;
+    margin: 4px 0 !important;
+    border-radius: 7px !important;
+    font-size: 11.5px !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.025em !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    box-sizing: border-box !important;
+    cursor: pointer !important;
+    user-select: none !important;
+    outline: none !important;
+    text-align: center !important;
+    list-style: none !important;
+    transition: all 0.15s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+/* Details Summary Reset */
+details.custom-prompt-accordion > summary::-webkit-details-marker {
+    display: none !important;
+}
+
+details.custom-prompt-accordion > summary b,
+details.custom-prompt-accordion > summary span {
+    font-size: 11.5px !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.025em !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    color: inherit !important;
+}
+
+/* Negative Prompt Container Overrides */
+.np-wrap.collapsed {
+    border: none !important;
+    background: transparent !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.np-wrap:not(.collapsed) {
+    margin: 4px 0 !important;
+    padding: 4px !important;
+    border-radius: 8px !important;
+}
+
+.np-wrap .np-bar {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+/* Segmented Prompt Accordion Outer Wrapper & Label Wrap */
+#segmented_prompt_accordion_txt2img,
+#segmented_prompt_accordion_img2img {
+    margin: 4px 0 !important;
+    border: none !important;
+    background: transparent !important;
+}
+
+#segmented_prompt_accordion_txt2img > .label-wrap span,
+#segmented_prompt_accordion_img2img > .label-wrap span {
+    font-size: 11.5px !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.025em !important;
+    color: inherit !important;
+}
+
+/* Tools Collapse Button Specifics */
+#txt2img_collapse_btn,
+#img2img_collapse_btn {
+    width: 100% !important;
+}
+
+/* --- THEME 1: NATIVE FLUID (CODEX) COLOR TOKENS --- */
+body.fluid-theme-codex details.custom-prompt-accordion > summary,
+body.fluid-theme-codex .np-wrap.collapsed .np-toggle,
+body.fluid-theme-codex .np-wrap:not(.collapsed) .np-bar,
+body.fluid-theme-codex .np-toggle,
+body.fluid-theme-codex #segmented_prompt_accordion_txt2img > .label-wrap,
+body.fluid-theme-codex #segmented_prompt_accordion_img2img > .label-wrap,
+body.fluid-theme-codex .fluid-mobile-toggle,
+body.fluid-theme-codex #txt2img_collapse_btn,
+body.fluid-theme-codex #img2img_collapse_btn {
+    background: #202020 !important;
+    border: 1px solid #303030 !important;
+    color: #d4d4d4 !important;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25) !important;
+}
+
+body.fluid-theme-codex details.custom-prompt-accordion > summary:hover,
+body.fluid-theme-codex .np-wrap.collapsed .np-toggle:hover,
+body.fluid-theme-codex .np-wrap:not(.collapsed) .np-bar:hover,
+body.fluid-theme-codex .np-toggle:hover,
+body.fluid-theme-codex #segmented_prompt_accordion_txt2img > .label-wrap:hover,
+body.fluid-theme-codex #segmented_prompt_accordion_img2img > .label-wrap:hover,
+body.fluid-theme-codex .fluid-mobile-toggle:hover,
+body.fluid-theme-codex #txt2img_collapse_btn:hover,
+body.fluid-theme-codex #img2img_collapse_btn:hover {
+    background: #282828 !important;
+    border-color: #484848 !important;
+    color: #ffffff !important;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4) !important;
+}
+
+body.fluid-theme-codex .np-wrap:not(.collapsed) {
+    background: #1c1c1c !important;
+    border: 1px solid #282828 !important;
+}
+
+/* --- THEME 2: STUDIO PRO MAX COLOR TOKENS --- */
+body.fluid-theme-pro-max details.custom-prompt-accordion > summary,
+body.fluid-theme-pro-max .np-wrap.collapsed .np-toggle,
+body.fluid-theme-pro-max .np-wrap:not(.collapsed) .np-bar,
+body.fluid-theme-pro-max .np-toggle,
+body.fluid-theme-pro-max #segmented_prompt_accordion_txt2img > .label-wrap,
+body.fluid-theme-pro-max #segmented_prompt_accordion_img2img > .label-wrap,
+body.fluid-theme-pro-max .fluid-mobile-toggle,
+body.fluid-theme-pro-max #txt2img_collapse_btn,
+body.fluid-theme-pro-max #img2img_collapse_btn {
+    background: #141824 !important;
+    border: 1px solid #283147 !important;
+    color: #e2e8f0 !important;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3) !important;
+}
+
+body.fluid-theme-pro-max details.custom-prompt-accordion > summary:hover,
+body.fluid-theme-pro-max .np-wrap.collapsed .np-toggle:hover,
+body.fluid-theme-pro-max .np-wrap:not(.collapsed) .np-bar:hover,
+body.fluid-theme-pro-max .np-toggle:hover,
+body.fluid-theme-pro-max #segmented_prompt_accordion_txt2img > .label-wrap:hover,
+body.fluid-theme-pro-max #segmented_prompt_accordion_img2img > .label-wrap:hover,
+body.fluid-theme-pro-max .fluid-mobile-toggle:hover,
+body.fluid-theme-pro-max #txt2img_collapse_btn:hover,
+body.fluid-theme-pro-max #img2img_collapse_btn:hover {
+    background: #1d2334 !important;
+    border-color: #6366f1 !important;
+    color: #ffffff !important;
+    box-shadow: 0 0 10px rgba(99, 102, 241, 0.25) !important;
+}
+
+body.fluid-theme-pro-max .np-wrap:not(.collapsed) {
+    background: #10141e !important;
+    border: 1px solid #232a3d !important;
+}
+
+/* --- THEME 3: PURE GRADIO DEFAULT TOKENS --- */
+details.custom-prompt-accordion > summary,
+.np-wrap.collapsed .np-toggle,
+.np-wrap:not(.collapsed) .np-bar,
+.np-toggle,
+#segmented_prompt_accordion_txt2img > .label-wrap,
+#segmented_prompt_accordion_img2img > .label-wrap,
+.fluid-mobile-toggle,
+#txt2img_collapse_btn,
+#img2img_collapse_btn {
+    background: var(--button-secondary-background-fill, var(--background-fill-secondary)) !important;
+    border: 1px solid var(--button-secondary-border-color, var(--border-color-primary)) !important;
+    color: var(--button-secondary-text-color, var(--body-text-color)) !important;
+}
+
+details.custom-prompt-accordion > summary:hover,
+.np-wrap.collapsed .np-toggle:hover,
+.np-wrap:not(.collapsed) .np-bar:hover,
+.np-toggle:hover,
+#segmented_prompt_accordion_txt2img > .label-wrap:hover,
+#segmented_prompt_accordion_img2img > .label-wrap:hover,
+.fluid-mobile-toggle:hover,
+#txt2img_collapse_btn:hover,
+#img2img_collapse_btn:hover {
+    background: var(--button-secondary-background-fill-hover, var(--background-fill-primary)) !important;
+    color: var(--button-secondary-text-color-hover, var(--body-text-color)) !important;
+}
+
 body.fluid-bone-codex-v1 #txt2img_accordions,
 body.fluid-bone-codex-v1 #img2img_accordions,
 body.fluid-bone-codex-v1 #txt2img_script_container,
