@@ -1,14 +1,13 @@
 /*
   Fluid Forge - Theme & UI Bone Configuration
-  1. THEMES: Codex (1:1 Studio Dark), Dark Tech, Gradio Base
-  2. UI BONES: Codex v1 (Compact Bento Grid Cockpit) & Legacy Fluid Forge
+  1. THEMES: Native Fluid (Codex Studio Dark) & Pure Gradio
+  2. UI BONES: Codex v1 (Compact Bento Grid Cockpit)
   3. Mobile-First Bottom Sheet & Touch Optimization
 */
 
 /* ==========================================================================
-   THEME: CODEX (1:1 Pristine Codex Studio Theme)
+   THEME: NATIVE FLUID / CODEX (1:1 Pristine Codex Studio Theme)
    ========================================================================== */
-:root,
 :root.fluid-theme-codex,
 html.fluid-theme-codex,
 body.fluid-theme-codex,
@@ -25,21 +24,21 @@ body.fluid-theme-codex.dark,
     --block-background-fill: #202020 !important;
     --input-background-fill: #272727 !important;
     --table-background-fill: #181818 !important;
-    
+
     /* Background Override Variables (for compatibility with other theme extensions) */
     --bg-deep: #181818 !important;
     --bg-base: #181818 !important;
     --bg-elevated: #202020 !important;
     --surface: #252525 !important;
     --surface-hover: #303030 !important;
-    
+
     /* Accent & Sliders */
     --accent: #ffffff !important;
     --accent-glow: rgba(255, 255, 255, 0.15) !important;
     --slider-color: #ffffff !important;
     --color-accent: #ffffff !important;
     --color-accent-soft: #2a2a2a !important;
-    
+
     /* Borders */
     --border: #292929 !important;
     --border-hover: #404040 !important;
@@ -49,7 +48,7 @@ body.fluid-theme-codex.dark,
     --block-border-color: #292929 !important;
     --input-border-color: #333333 !important;
     --input-border-color-focus: #555555 !important;
-    
+
     /* Typography & Text */
     --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Inter", "Helvetica Neue", sans-serif !important;
     --font-mono: ui-monospace, "SF Mono", "JetBrains Mono", "Fira Code", "Cascadia Code", "Roboto Mono", monospace !important;
@@ -62,7 +61,7 @@ body.fluid-theme-codex.dark,
     --input-placeholder-color: #737373 !important;
     --link-text-color: #3b82f6 !important;
     --link-text-color-hover: #60a5fa !important;
-    
+
     /* Primary CTA */
     --button-primary-background-fill: #f4f4f4 !important;
     --button-primary-text-color: #181818 !important;
@@ -70,7 +69,7 @@ body.fluid-theme-codex.dark,
     --button-primary-background-fill-hover: #ffffff !important;
     --button-primary-text-color-hover: #000000 !important;
     --button-primary-border-color-hover: #ffffff !important;
-    
+
     /* Secondary CTA */
     --button-secondary-background-fill: #252525 !important;
     --button-secondary-text-color: #d4d4d4 !important;
@@ -85,7 +84,7 @@ body.fluid-theme-codex.dark,
     font-family: var(--font) !important;
 }
 
-/* Base Canvas & App Body Styling */
+/* Base Canvas & App Body Styling (Native Fluid) */
 body.fluid-theme-codex,
 html.fluid-theme-codex,
 .fluid-theme-codex .gradio-container,
@@ -98,63 +97,16 @@ html.fluid-theme-codex,
 }
 
 /* ==========================================================================
-   THEME: DARK TECH (Cyber Precision Dark)
+   THEME: PURE GRADIO
    ========================================================================== */
-:root.fluid-theme-dark-tech,
-html.fluid-theme-dark-tech,
-body.fluid-theme-dark-tech,
-body.fluid-theme-dark-tech.dark,
-.fluid-theme-dark-tech,
-.fluid-theme-dark-tech .gradio-container,
-.fluid-theme-dark-tech #gradio-app,
-.fluid-theme-dark-tech gradio-app {
-    --background-fill-primary: #0f1117 !important;
-    --background-fill-secondary: #161922 !important;
-    --body-background-fill: #0f1117 !important;
-    --panel-background-fill: #161922 !important;
-    --block-background-fill: #161922 !important;
-    --input-background-fill: #1c202d !important;
-    --table-background-fill: #0f1117 !important;
-    --bg-deep: #0f1117 !important;
-    --bg-base: #0f1117 !important;
-    --bg-elevated: #161922 !important;
-    --surface: #1c202d !important;
-    --surface-hover: #262c3e !important;
-    --accent: #38bdf8 !important;
-    --accent-glow: rgba(56, 189, 248, 0.2) !important;
-    --slider-color: #38bdf8 !important;
-    --color-accent: #38bdf8 !important;
-    --border: #232838 !important;
-    --border-hover: #3b4259 !important;
-    --border-color-primary: #232838 !important;
-    --border-color-accent: #2e354b !important;
-    --panel-border-color: #232838 !important;
-    --block-border-color: #232838 !important;
-    --input-border-color: #2b3145 !important;
-    --input-border-color-focus: #38bdf8 !important;
-    --foreground: #e2e8f0 !important;
-    --body-text-color: #e2e8f0 !important;
-    --button-primary-background-fill: #38bdf8 !important;
-    --button-primary-text-color: #0f1117 !important;
-    --button-primary-border-color: #38bdf8 !important;
-    --button-secondary-background-fill: #1c202d !important;
-    --button-secondary-text-color: #cbd5e1 !important;
-    --button-secondary-border-color: #2b3145 !important;
-    background-color: #0f1117 !important;
-    color: #e2e8f0 !important;
-}
-
-body.fluid-theme-dark-tech,
-html.fluid-theme-dark-tech,
-.fluid-theme-dark-tech .gradio-container,
-.fluid-theme-dark-tech #gradio-app,
-.fluid-theme-dark-tech gradio-app {
-    background-color: #0f1117 !important;
-    background: #0f1117 !important;
+/* In Pure Gradio mode, native Gradio CSS variables, colors, and backgrounds
+   are preserved. Structural styling adapts cleanly to Gradio default tokens. */
+.fluid-theme-pure-gradio {
+    /* Respect native Gradio fonts & variables */
 }
 
 /* Monospace & Data Elements */
-body.fluid-theme-codex input[type="number"], 
+body.fluid-theme-codex input[type="number"],
 body.fluid-theme-codex .gr-text-input[type="number"],
 body.fluid-theme-codex .token-counter,
 body.fluid-theme-codex .performance,

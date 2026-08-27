@@ -6,16 +6,25 @@
 
 (function () {
     
-    // --- 1. THEME INITIALIZATION (Codex Studio Dark Default) ---
+    // --- 1. THEME INITIALIZATION (Native Fluid vs Pure Gradio) ---
     const initTheme = () => {
+        let theme = 'Native Fluid';
+        if (typeof opts !== 'undefined' && opts.fluid_ui_theme) {
+            theme = opts.fluid_ui_theme;
+        }
+
         const targets = [document.documentElement, document.body];
         const gApp = document.querySelector('gradio-app') || document.querySelector('#gradio-app');
         if (gApp) targets.push(gApp);
 
         targets.forEach(el => {
             if (!el) return;
-            el.classList.remove('fluid-theme-dark-tech', 'fluid-theme-base');
-            el.classList.add('fluid-theme-codex');
+            el.classList.remove('fluid-theme-codex', 'fluid-theme-pure-gradio');
+            if (theme === 'Pure Gradio') {
+                el.classList.add('fluid-theme-pure-gradio');
+            } else {
+                el.classList.add('fluid-theme-codex');
+            }
         });
     };
 
