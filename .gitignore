@@ -1,0 +1,15 @@
+__pycache__/
+*.py[cod]
+*$py.class
+*.orig
+
+# Test artifacts & Chrome debug profiles
+test_screenshots/
+*.png
+*.jpg
+*.jpeg
+*.html
+test_*.py
+capture_*.py
+inspect_*.py
+.scratch/
